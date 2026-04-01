@@ -1,0 +1,52 @@
+[project]
+    name = "bitcut"
+    version = "0.1.0"
+    authors = [
+      { name="georgmagne", email="georgmagne@gmail.com" },
+    ]
+    description = "A simple CLI for slicing and splicing binary bit ranges."
+    readme = "README.md"
+    requires-python = ">=3.10"
+    classifiers = [
+        "Programming Language :: Python :: 3",
+        "Operating System :: OS Independent",
+    ]
+    dependencies = [
+        "bitstring>=4.4.0",
+        "click>=8.3.1",
+    ]
+
+[project.urls]
+    Homepage = "https://github.com/georgmagne/bitcut"
+
+[project.scripts]
+    bitcut = "bitcut.cli:cli"
+
+[dependency-groups]
+    dev = [
+        "basedpyright>=1.38.3",
+        "coverage>=7.13.5",
+        "pylint>=4.0.5",
+        "pytest>=9.0.2",
+        "pytest-cov>=7.1.0",
+    ]
+
+[tool.uv]
+    package = true
+
+[tool.basedpyright]
+    venvPath = "."
+    venv = ".venv"
+    typeCheckingMode = "off"
+
+[tool.pylint."format"]
+    max-line-length = 120
+
+[tool.pytest.ini_options]
+    addopts = "--cov=bitcut --cov-report=html"
+    testpaths = "tests"
+
+[tool.coverage.report]
+    exclude_lines = [
+        "if __name__ == .__main__.:",
+    ]
